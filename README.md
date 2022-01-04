@@ -52,6 +52,8 @@ docker run -d -p 8000:8000 -p 8010:8010 -p 8020:8020 -e PASSWORD=<password> -e G
 * Visual Studio Code : http://server-address:8010/
 * Terminal - ttyd : http://server-address:8020/
 
+* You can download this image from [Docker Hub](https://hub.docker.com/repository/docker/byeongal/ainize-workspace-ml-workspace).
+
 ### How to use this image in Ainize Workspace
 1. Click the "Create your workspace" button on the [Ainize Workspace page](https://ainize.ai/workspace).
 2. As the Container option, select "Import from github".
@@ -60,3 +62,4 @@ docker run -d -p 8000:8000 -p 8010:8010 -p 8020:8020 -e PASSWORD=<password> -e G
 5. Select the required tool(s) and click the OK button.
 6. Click "Start my work" after selecting the machine type.
 Now, enjoy your own Ainize Workspace! 🎉
+

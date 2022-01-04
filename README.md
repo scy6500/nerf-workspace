@@ -56,7 +56,7 @@ docker run -d -p 8000:8000 -p 8010:8010 -p 8020:8020 -e PASSWORD=<password> -e G
 1. Click the "Create your workspace" button on the [Ainize Workspace page](https://ainize.ai/workspace).
 2. As the Container option, select "Import from github".
 3. Click the "Start with repo url" button.
-4. Put "https://github.com/ainize-workspace-collections/ml-workspace" in "Enter a Github repo url". And select the "2021.09-dev" branch.
+4. Put "https://github.com/ainize-workspace-collections/ml-workspace" in "Enter a Github repo url". And select the "2022.01-dev" branch.
 5. Select the required tool(s) and click the OK button.
 6. Click "Start my work" after selecting the machine type.
 Now, enjoy your own Ainize Workspace! 🎉

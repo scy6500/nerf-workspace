@@ -1,5 +1,5 @@
 # Base Image From https://github.com/ainize-team/ainize-workspace-base-images
-FROM byeongal/ainize-workspace-base-cuda11.3.1-py3.8-dev
+FROM byeongal/ainize-workspace-base-cuda11.3.1-py3.9-dev
 
 USER root
 ## Basic Env

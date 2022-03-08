@@ -209,36 +209,18 @@ RUN \
 
 ### END BASICS ###
 
-### Oh-My-Zsh ###
-RUN \
-    apt-get update --fix-missing && \
-    apt-get install -y zsh
-ENV SHELL /usr/bin/zsh
-RUN \
-    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-    conda init zsh && \
-    chsh -s /usr/bin/zsh $NB_USER
-### Add Oh My Zsh Plugins ###
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-RUN git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-RUN sed -i 's/plugins=(.*)/plugins=(git pip python zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search zsh-completions)/g' ~/.zshrc
-
-### END Oh-My-Zsh ###
-
 ### MINICONDA ###
 # Install Miniconda: https://repo.continuum.io/miniconda/
 ENV \
     CONDA_DIR=/opt/conda \
     CONDA_ROOT=/opt/conda \
-    PYTHON_VERSION="3.8" \
-    CONDA_PYTHON_DIR=/opt/conda/lib/python3.8 \
-    MINICONDA_VERSION=4.10.3 \
-    MINICONDA_MD5=14da4a9a44b337f7ccb8363537f65b9c \
-    CONDA_VERSION=4.10.3
+    PYTHON_VERSION="3.7" \
+    CONDA_PYTHON_DIR=/opt/conda/lib/python3.7 \
+    MINICONDA_VERSION=4.11.0 \
+    MINICONDA_MD5=7675bd23411179956bcc4692f16ef27d \
+    CONDA_VERSION=4.11.0
 
-RUN wget --no-verbose https://repo.anaconda.com/miniconda/Miniconda3-py38_${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
+RUN wget --no-verbose https://repo.anaconda.com/miniconda/Miniconda3-py37_${CONDA_VERSION}-Linux-x86_64.sh -O ~/miniconda.sh && \
     echo "${MINICONDA_MD5} *miniconda.sh" | md5sum -c - && \
     /bin/bash ~/miniconda.sh -b -p $CONDA_ROOT && \
     export PATH=$CONDA_ROOT/bin:$PATH && \
@@ -309,11 +291,11 @@ RUN \
 #    rm requirements.txt && \
 #    clean-layer.sh
 
-# Install package from environment.yml ( conda )
-COPY environment.yml ./environment.yml
-RUN conda env update --name root --file environment.yml && \
-    rm environment.yml && \
-    clean-layer.sh
+# # Install package from environment.yml ( conda )
+# COPY environment.yml ./environment.yml
+# RUN conda env update --name root --file environment.yml && \
+#     rm environment.yml && \
+#     clean-layer.sh
 
 # /workspace
 # Make folders
@@ -326,6 +308,24 @@ RUN \
     fi
 ENV HOME=$WORKSPACE_HOME
 WORKDIR $WORKSPACE_HOME
+
+### Oh-My-Zsh ###
+RUN \
+    apt-get update --fix-missing && \
+    apt-get install -y zsh
+ENV SHELL /usr/bin/zsh
+RUN \
+    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
+    conda init zsh && \
+    chsh -s /usr/bin/zsh $NB_USER
+### Add Oh My Zsh Plugins ###
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+RUN git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+RUN sed -i 's/plugins=(.*)/plugins=(git pip python zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search zsh-completions)/g' ~/.zshrc
+
+### END Oh-My-Zsh ###
 
 ### Start Ainize Worksapce ###
 COPY start.sh /scripts/start.sh

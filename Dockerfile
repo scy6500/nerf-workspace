@@ -291,11 +291,11 @@ RUN \
 #    rm requirements.txt && \
 #    clean-layer.sh
 
-# # Install package from environment.yml ( conda )
-# COPY environment.yml ./environment.yml
-# RUN conda env update --name root --file environment.yml && \
-#     rm environment.yml && \
-#     clean-layer.sh
+# Install package from environment.yml ( conda )
+COPY environment.yml ./environment.yml
+RUN conda env update --name root --file environment.yml && \
+    rm environment.yml && \
+    clean-layer.sh
 
 # /workspace
 # Make folders

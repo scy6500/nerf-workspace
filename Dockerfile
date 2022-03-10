@@ -285,18 +285,6 @@ RUN \
 
 ### END DEV TOOLS ###
 
-# # Install package from requirements.txt
-# COPY requirements.txt ./requirements.txt
-# RUN pip install -r ./requirements.txt && \
-#    rm requirements.txt && \
-#    clean-layer.sh
-
-# Install package from environment.yml ( conda )
-COPY environment.yml ./environment.yml
-RUN conda env update --name root --file environment.yml && \
-    rm environment.yml && \
-    clean-layer.sh
-
 # /workspace
 # Make folders
 ENV WORKSPACE_HOME="/workspace"
@@ -326,6 +314,22 @@ RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-m
 RUN sed -i 's/plugins=(.*)/plugins=(git pip python zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search zsh-completions)/g' ~/.zshrc
 
 ### END Oh-My-Zsh ###
+
+## User Need To Edit ##
+# # Install package from requirements.txt
+# COPY requirements.txt ./requirements.txt
+# RUN pip install -r ./requirements.txt && \
+#    rm requirements.txt && \
+#    clean-layer.sh
+
+# Install package from environment.yml ( conda )
+COPY environment.yml ./environment.yml
+RUN conda env update --name root --file environment.yml && \
+    rm environment.yml && \
+    clean-layer.sh
+
+COPY examples /workspace/
+
 
 ### Start Ainize Worksapce ###
 COPY start.sh /scripts/start.sh

@@ -297,23 +297,7 @@ RUN \
 ENV HOME=$WORKSPACE_HOME
 WORKDIR $WORKSPACE_HOME
 
-### Oh-My-Zsh ###
-RUN \
-    apt-get update --fix-missing && \
-    apt-get install -y zsh
-ENV SHELL /usr/bin/zsh
-RUN \
-    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && \
-    conda init zsh && \
-    chsh -s /usr/bin/zsh $NB_USER
-### Add Oh My Zsh Plugins ###
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-RUN git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-RUN git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-RUN sed -i 's/plugins=(.*)/plugins=(git pip python zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search zsh-completions)/g' ~/.zshrc
-
-### END Oh-My-Zsh ###
+# ### END Oh-My-Zsh ###
 
 ## User Need To Edit ##
 # # Install package from requirements.txt
@@ -328,8 +312,7 @@ RUN conda env update --name root --file environment.yml && \
     rm environment.yml && \
     clean-layer.sh
 
-COPY examples /workspace/
-
+COPY examples /tmpCode/
 
 ### Start Ainize Worksapce ###
 COPY start.sh /scripts/start.sh

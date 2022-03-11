@@ -1,9 +1,6 @@
 echo "Run Jupyter & VSCode & TTYD"
 echo "Password: $PASSWORD"
 
-echo "Copy Code from tmpCode"
-cp -R -n /tmpCode/* /workspace
-
 if [ "$GH_REPO" ]
 then
   echo "Github Repo: $GH_REPO"

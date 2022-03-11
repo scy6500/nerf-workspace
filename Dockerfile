@@ -312,8 +312,6 @@ RUN conda env update --name root --file environment.yml && \
     rm environment.yml && \
     clean-layer.sh
 
-COPY examples /tmpCode/
-
 ### Start Ainize Worksapce ###
 COPY start.sh /scripts/start.sh
 RUN ["chmod", "+x", "/scripts/start.sh"]

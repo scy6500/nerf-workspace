@@ -7,7 +7,12 @@ cp -R -n /tmpCode/* /workspace
 if [ "$GH_REPO" ]
 then
   echo "Github Repo: $GH_REPO"
-  git clone ${GH_REPO}
+  if ["$GH_BRANCH"]
+  then
+    git clone -b ${GH_BRANCH} --single-branch ${GH_REPO} .
+  else
+    git clone ${GH_REPO} .
+  fi
   git config --global user.email "$USER_EMAIL"
   git config --global user.name "$USER_NAME"
 fi

@@ -26,30 +26,59 @@ RUN apt-get update --yes && \
 	apt-utils \
 	autoconf \
 	automake \
+	build-essential \
 	ca-certificates \
+	ccache \
+	clang-format \
+	cm-super \
 	cmake \
 	curl \
+	dvipng \
+	ffmpeg \
 	fonts-liberation \
 	g++ \
+	gcc \
+	gir1.2-gtk-3.0 \
 	git \
 	gnupg2 \
+	golang \
+	libcairo2-dev \
+	libcurl3-dev \
+	libfreetype6-dev \
+	libgflags-dev \
+	libgirepository1.0-dev \
+	libgl1-mesa-glx \
+	libgtest-dev \
+	libhdf5-serial-dev \
+	libjpeg-dev \
 	libjson-c-dev \
+	libpng-dev \
 	libssl-dev \
 	libtool \
+	libturbojpeg \
+	libunwind-dev \
 	libwebsockets-dev \
+	libzmq3-dev \
 	locales \
 	make \
 	openssh-client \
 	openssh-server \
 	pandoc \
 	pkg-config \
+	python3-dev \
+	python3-gi \
+	python3-gi-cairo \
+	rsync \
 	run-one \
+	software-properties-common \
 	sudo \
 	tini \
 	unzip \
 	vim \
 	vim-common \
-	wget && \
+	wget \
+	zip \
+	zlib1g-dev && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen && \
     clean-layer.sh

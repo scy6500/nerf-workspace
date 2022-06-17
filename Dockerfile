@@ -249,6 +249,34 @@ RUN /bin/bash -c 'cp /tmp/logo.png $(python -c "import sys; print(sys.path[-1])"
 RUN /bin/bash -c 'cp /tmp/favicon.ico $(python -c "import sys; print(sys.path[-1])")/notebook/static/base/images/favicon.ico'
 RUN /bin/bash -c 'cp /tmp/favicon.ico $(python -c "import sys; print(sys.path[-1])")/notebook/static/favicon.ico'
 
+# Install colmap
+RUN git clone https://github.com/ceres-solver/ceres-solver.git --branch 1.14.0
+RUN cd ceres-solver && \
+	mkdir build && \
+	cd build && \
+	cmake .. -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF && \
+	make -j4 && \
+	make install && \
+    clean-layer.sh
+
+RUN git clone https://github.com/colmap/colmap.git --branch 3.7
+
+RUN cd colmap && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make -j4 && \
+	make install && \
+    clean-layer.sh
+    
+# Install nerf package
+RUN pip install pytorch-lightning==0.7.5 test-tube kornia==0.2.0 opencv-python==4.2.0.34
+RUN git clone https://github.com/aliutkus/torchsearchsorted.git
+RUN cd torchsearchsorted && \
+	pip install . && \
+	rm -rf build && \
+    pip install .
+
 ## Install Visual Studio Code Server
 RUN curl -fsSL https://code-server.dev/install.sh | sh && \
     clean-layer.sh

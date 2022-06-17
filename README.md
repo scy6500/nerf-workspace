@@ -1,9 +1,9 @@
 <h1 align="center">
-    ML Workspace
+    NeRF Workspace
     <br>
 </h1>
 
-This branch is for creating Ainize Workspace images for machine learning developers or machine learning researcher.
+This branch is for creating Ainize Workspace images for [NeRF_PL](https://github.com/kwea123/nerf_pl).
 
 ## Installed Python libraries
 

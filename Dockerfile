@@ -289,11 +289,11 @@ RUN cd colmap && \
     
 # Install nerf package
 RUN pip install pytorch-lightning==0.7.5 test-tube kornia==0.2.0 opencv-python==4.2.0.34
-RUN git clone https://github.com/aliutkus/torchsearchsorted.git
-RUN cd torchsearchsorted && \
-	pip install . && \
-	rm -rf build && \
-    pip install .
+#RUN git clone https://github.com/aliutkus/torchsearchsorted.git
+#RUN cd torchsearchsorted && \
+#	pip install . && \
+#	rm -rf build && \
+#    pip install .
 
 ## Install Visual Studio Code Server
 RUN curl -fsSL https://code-server.dev/install.sh | sh && \

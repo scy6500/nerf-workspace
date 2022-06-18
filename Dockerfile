@@ -81,22 +81,21 @@ RUN apt-get update --yes && \
 	zip \
 	zlib1g-dev \
 	libboost-program-options-dev \
-    	libboost-filesystem-dev \
-    	libboost-graph-dev \
-    	libboost-system-dev \
-    	libboost-test-dev \
+    libboost-filesystem-dev \
+    libboost-graph-dev \
+    libboost-system-dev \
+    libboost-test-dev \
 	libeigen3-dev \
-        libsuitesparse-dev \
-        libfreeimage-dev \
-        libmetis-dev \
-        libgoogle-glog-dev \
+    libsuitesparse-dev \
+    libfreeimage-dev \
+    libmetis-dev \
+    libgoogle-glog-dev \
 	libgflags-dev \
 	libglew-dev \
-        qtbase5-dev \
-        libqt5opengl5-dev \
+    qtbase5-dev \
+    libqt5opengl5-dev \
 	libcgal-qt5-dev \
-        libcgal-dev \
-	libatlas-base-dev \
+    libcgal-dev \
 	libsuitesparse-dev && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen && \

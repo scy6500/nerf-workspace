@@ -3,6 +3,8 @@ echo "Password: $PASSWORD"
 
 pip install git+https://github.com/aliutkus/torchsearchsorted
 
+cp -R -n /code/* /workspace
+
 if [ "$GH_REPO" ]
 then
   echo "Github Repo: $GH_REPO"

@@ -369,4 +369,5 @@ dependencies:
       - imageio==2.19.3
       - pandas==1.4.2
       - test-tube==0.7.5
+      - scikit-image==0.19.3
 prefix: /opt/conda

@@ -257,7 +257,7 @@ RUN cd ceres-solver && \
     cd ../.. && \
     rm -rf ceres-solver && \
     clean-layer.sh
-
+    
 # Configure and compile COLMAP:
 RUN git clone https://github.com/colmap/colmap.git
 RUN cd colmap && \
@@ -265,7 +265,7 @@ RUN cd colmap && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make -j && \
+    make -j4 && \
     make install && \
     cd ../.. && \
     rm -rf colmap && \

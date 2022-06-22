@@ -194,8 +194,13 @@ RUN \
     else \
     mkdir $WORKSPACE_HOME && chmod a+rwx $WORKSPACE_HOME; \
     fi
+    
 ENV HOME=$WORKSPACE_HOME
 WORKDIR $WORKSPACE_HOME
+
+# Copy Code
+COPY /code /code
+
 ### Start Ainize Worksapce ###
 COPY start.sh /scripts/start.sh
 RUN ["chmod", "+x", "/scripts/start.sh"]
